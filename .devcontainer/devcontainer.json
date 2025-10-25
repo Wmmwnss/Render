@@ -1,40 +1,26 @@
 {
-    "name": "Ubuntu 24.04 Development Container",
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
-    "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash"
-    },
-    "extensions": [
-        "ms-vscode.vscode-node-pack",
-        "vscjava.vscode-java-pack",
-        "redhat.java",
-        "ms-vscode.vscode-java-debug",
-        "vscjava.vscode-java-dependency",
-        "vscjava.vscode-java-test",
-        "ms-vscode.vscode-typescript-next",
-        "bradlc.vscode-tailwindcss"
-    ],
-    "forwardPorts": [22],
-    "portsAttributes": {
-        "22": {
-            "label": "SSH",
-            "onAutoForward": "silent"
-        }
-    },
-    "remoteUser": "developer",
+    "name": "Java Node Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
-        "ghcr.io/devcontainers/features/common-utils:2": {
-            "installZsh": true,
-            "username": "developer",
-            "userUid": "1000",
-            "userGid": "1000"
+        "ghcr.io/devcontainers/features/java:1": {
+            "version": "21",
+            "jdkDistro": "openjdk"
         },
-        "ghcr.io/devcontainers/features/git:1": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "20"
+        },
+        "ghcr.io/devcontainers/features/sshd:1": {
             "version": "latest"
         }
     },
-    "postCreateCommand": "echo 'Container setup completed!' && java -version && node --version && npm --version"
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.vscode-node-pack",
+                "vscjava.vscode-java-pack",
+                "redhat.java"
+            ]
+        }
+    },
+    "postCreateCommand": "apt-get update && apt-get install -y nano vim unzip zip tar gzip bzip2 htop tree net-tools iputils-ping dnsutils && java -version && node --version && npm --version"
 }
-
