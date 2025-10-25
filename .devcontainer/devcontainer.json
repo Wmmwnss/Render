@@ -36,7 +36,4 @@
         }
     },
     "postCreateCommand": "echo 'Container setup completed!' && java -version && node --version && npm --version"
-}        }
-    },
-    "postCreateCommand": "echo 'Container setup completed!' && java -version && node --version && npm --version"
 }
