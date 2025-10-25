@@ -1,0 +1,40 @@
+{
+    "name": "Ubuntu 24.10 Development Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "extensions": [
+        "ms-vscode.vscode-node-pack",
+        "vscjava.vscode-java-pack",
+        "redhat.java",
+        "ms-vscode.vscode-java-debug",
+        "vscjava.vscode-java-dependency",
+        "vscjava.vscode-java-test",
+        "ms-vscode.vscode-typescript-next",
+        "bradlc.vscode-tailwindcss"
+    ],
+    "forwardPorts": [22],
+    "portsAttributes": {
+        "22": {
+            "label": "SSH",
+            "onAutoForward": "silent"
+        }
+    },
+    "remoteUser": "developer",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": true,
+            "username": "developer",
+            "userUid": "1000",
+            "userGid": "1000"
+        },
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "latest"
+        }
+    },
+    "postCreateCommand": "echo 'Container setup completed!' && java -version && node --version && npm --version"
+}
