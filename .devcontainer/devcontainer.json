@@ -1,8 +1,7 @@
 {
-    "name": "Ubuntu 24.10 Development Container",
+    "name": "Ubuntu 24.04 Development Container",
     "build": {
-        "dockerfile": "Dockerfile",
-        "context": ".."
+        "dockerfile": "Dockerfile"
     },
     "settings": {
         "terminal.integrated.shell.linux": "/bin/bash"
@@ -35,6 +34,9 @@
         "ghcr.io/devcontainers/features/git:1": {
             "version": "latest"
         }
+    },
+    "postCreateCommand": "echo 'Container setup completed!' && java -version && node --version && npm --version"
+}        }
     },
     "postCreateCommand": "echo 'Container setup completed!' && java -version && node --version && npm --version"
 }
